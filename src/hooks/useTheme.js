@@ -6,7 +6,7 @@ export default function useTheme() {
   const [theme, setTheme] = useState(darkTheme);
 
   return {
-    theme,
+    ...theme,
     mode,
   };
 }

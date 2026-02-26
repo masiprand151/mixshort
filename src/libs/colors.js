@@ -2,46 +2,40 @@ export const darkTheme = {
   mode: "dark",
 
   colors: {
-    background: "#111827",
-    surface: "#1F2937",
-    card: "#1F2937",
-    elevated: "#374151",
+    background: "#000000",
+    surface: "#0C0C0F",
+    card: "#111216",
+    elevated: "#181A20",
 
     textPrimary: "#FFFFFF",
-    textSecondary: "#D1D5DB",
-    textMuted: "#9CA3AF",
-    textDisabled: "#6B7280",
+    textSecondary: "#B8BDC9",
+    textMuted: "#7E8596",
+    textDisabled: "#4A4F5C",
 
-    primary: "#6366F1",
-    primaryLight: "#818CF8",
-    primaryDark: "#4F46E5",
-    onPrimary: "#FFFFFF",
+    primary: "#0d6efd",
+    secondary: "#6c757d",
+    onSecondary: "#a1a1a1",
 
-    secondary: "#10B981",
-    secondaryLight: "#34D399",
-    secondaryDark: "#059669",
-    onSecondary: "#FFFFFF",
+    success: "#198754",
+    warning: "#EAB308",
+    danger: "#dc3545",
+    info: "#0dcaf0",
 
-    success: "#22C55E",
-    warning: "#F59E0B",
-    error: "#EF4444",
-    info: "#3B82F6",
+    border: "#1E2230",
+    divider: "#1A1D28",
 
-    border: "#374151",
-    divider: "#4B5563",
+    inputBackground: "#0F1117",
+    inputBorder: "#1E2230",
+    inputFocus: "#7C82FF",
+    placeholder: "#6B7280",
 
-    inputBackground: "#1F2937",
-    inputBorder: "#374151",
-    inputFocus: "#6366F1",
-    placeholder: "#9CA3AF",
-
-    buttonPrimary: "#6366F1",
+    buttonPrimary: "#0d6efd",
     buttonPrimaryText: "#FFFFFF",
-    buttonSecondary: "#374151",
+    buttonSecondary: "#1A1D28",
     buttonSecondaryText: "#FFFFFF",
 
-    overlay: "rgba(0,0,0,0.6)",
-    backdrop: "rgba(0,0,0,0.8)",
+    overlay: "rgba(0,0,0,0.7)",
+    backdrop: "rgba(0, 0, 0, 0.15)",
   },
 
   spacing: {
@@ -82,6 +76,13 @@ export const darkTheme = {
       elevation: 4,
     },
   },
+
+  utils: {
+    transparent: (color, opacity = 0.5) => hexToRgba(color, opacity),
+
+    alpha: (colorKey, opacity = 0.5) =>
+      hexToRgba(darkTheme.colors[colorKey], opacity),
+  },
 };
 
 export const lightTheme = {
@@ -97,4 +98,17 @@ export const lightTheme = {
     border: "#E5E7EB",
     divider: "#E5E7EB",
   },
+};
+
+const hexToRgba = (hex, opacity = 1) => {
+  if (!hex) return hex;
+
+  const sanitized = hex.replace("#", "");
+
+  const bigint = parseInt(sanitized, 16);
+  const r = (bigint >> 16) & 255;
+  const g = (bigint >> 8) & 255;
+  const b = bigint & 255;
+
+  return `rgba(${r}, ${g}, ${b}, ${opacity})`;
 };
