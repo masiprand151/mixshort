@@ -3,17 +3,15 @@ import {
   Text,
   Dimensions,
   TouchableOpacity,
-  Image,
   FlatList,
   ActivityIndicator,
 } from "react-native";
 import useTheme from "../hooks/useTheme";
 import DiscoverHeader from "../components/DiscoverHeader";
 import BottomSheet from "../components/ButtonSheet";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import useDrama from "../hooks/useDrama";
-import Badge from "../components/Badge";
-import Flame from "../components/Flame";
+import DiscoverCard from "../components/DiscoverCard";
 
 const { width, height } = Dimensions.get("window");
 const ITEM_WIDTH = width / 2 - 20;
@@ -24,93 +22,10 @@ export default function Discover() {
   const { drama, meta, loading, refreshing, tags, page, setPage, refresh } =
     useDrama();
 
-  const renderItem = ({ item }) => {
-    return (
-      <TouchableOpacity
-        style={{
-          width: ITEM_WIDTH,
-          marginBottom: theme.spacing.md,
-          backgroundColor: theme.colors.card,
-          borderRadius: theme.radius.sm,
-          overflow: "hidden",
-        }}
-      >
-        <View>
-          <Image
-            source={{ uri: item.thumbnail }}
-            style={{
-              width: "100%",
-              height: ITEM_WIDTH * 1.5,
-            }}
-          />
-          {/* badge */}
-          <View
-            style={{
-              position: "absolute",
-              top: theme.spacing.sm,
-              left: theme.spacing.sm,
-              gap: theme.spacing.xs,
-            }}
-          >
-            <Badge
-              visible={item.isHot}
-              title={"HOT"}
-              variant="danger"
-              containerStyle={{ width: theme.spacing.xxl }}
-            />
-            <Badge
-              visible={item.isExclusive}
-              title={"EXCLUSIVE"}
-              variant="primary"
-            />
-          </View>
-          <Flame playCount={item.playCount} />
-        </View>
-
-        <View
-          style={{
-            paddingHorizontal: theme.spacing.sm,
-            paddingVertical: theme.spacing.sm,
-            gap: theme.spacing.xs,
-          }}
-        >
-          <Text
-            numberOfLines={2}
-            style={[
-              {
-                color: theme.colors.textPrimary,
-              },
-              theme.typography.body,
-            ]}
-          >
-            {item.name}
-          </Text>
-          <View
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              gap: theme.spacing.sm,
-              flexWrap: "wrap",
-            }}
-          >
-            {/* loop tags */}
-            {item.tags?.slice(0, 2).map((tag, i) => (
-              <View key={i} style={{}}>
-                <Text
-                  style={[
-                    { color: theme.colors.textSecondary },
-                    theme.typography.caption,
-                  ]}
-                >
-                  {tag}
-                </Text>
-              </View>
-            ))}
-          </View>
-        </View>
-      </TouchableOpacity>
-    );
-  };
+  const renderItem = useCallback(
+    ({ item }) => <DiscoverCard width={ITEM_WIDTH} item={item} />,
+    [ITEM_WIDTH],
+  );
 
   return (
     <View
