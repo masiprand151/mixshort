@@ -1,5 +1,4 @@
 import { View, Text, Pressable } from "react-native";
-import React from "react";
 import useTheme from "../hooks/useTheme";
 
 export default function CategoryItem({ item, active, onPress }) {
