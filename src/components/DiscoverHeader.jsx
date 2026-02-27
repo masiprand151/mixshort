@@ -11,7 +11,7 @@ const dumy = Array.from({ length: 20 }).map((_, i) => ({
   name: `data_${i}`,
 }));
 
-export default function DiscoverHeader({ setOpenButtonSheed }) {
+export default function DiscoverHeader({ setOpenButtonSheed, tags }) {
   const tabBarHeight = useBottomTabBarHeight();
   const theme = useTheme();
 
@@ -23,8 +23,10 @@ export default function DiscoverHeader({ setOpenButtonSheed }) {
     >
       {/* button search */}
       <ButtonSearch />
-      <Category setOpenButtonSheed={setOpenButtonSheed} data={dumy} />
-      <Text>DiscoverHeader</Text>
+      <Category
+        setOpenButtonSheed={setOpenButtonSheed}
+        data={tags.map((item) => ({ name: item }))}
+      />
     </View>
   );
 }

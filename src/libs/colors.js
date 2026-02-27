@@ -3,39 +3,43 @@ export const darkTheme = {
 
   colors: {
     background: "#000000",
-    surface: "#0C0C0F",
-    card: "#111216",
-    elevated: "#181A20",
+    surface: "#0C0F14",
+    card: "#161A22",
+    elevated: "#1C212B",
 
     textPrimary: "#FFFFFF",
     textSecondary: "#B8BDC9",
-    textMuted: "#7E8596",
+    textMuted: "#8A92A6",
     textDisabled: "#4A4F5C",
 
     primary: "#0d6efd",
+    primaryActive: "#0a58ca",
     secondary: "#6c757d",
     onSecondary: "#a1a1a1",
 
     success: "#198754",
-    warning: "#EAB308",
+    warning: "#ffc107",
     danger: "#dc3545",
     info: "#0dcaf0",
 
     border: "#1E2230",
     divider: "#1A1D28",
 
+    // ===== Input =====
     inputBackground: "#0F1117",
     inputBorder: "#1E2230",
-    inputFocus: "#7C82FF",
+    inputFocus: "#0d6efd",
     placeholder: "#6B7280",
 
     buttonPrimary: "#0d6efd",
     buttonPrimaryText: "#FFFFFF",
+
     buttonSecondary: "#1A1D28",
     buttonSecondaryText: "#FFFFFF",
 
+    // ===== Overlay =====
     overlay: "rgba(0,0,0,0.7)",
-    backdrop: "rgba(0, 0, 0, 0.15)",
+    backdrop: "rgba(0,0,0,0.3)",
   },
 
   spacing: {
@@ -44,9 +48,11 @@ export const darkTheme = {
     md: 16,
     lg: 24,
     xl: 32,
+    xxl: 40,
   },
 
   radius: {
+    xs: 4,
     sm: 6,
     md: 12,
     lg: 20,
@@ -60,6 +66,7 @@ export const darkTheme = {
     h3: { fontSize: 20, fontWeight: "600" },
     body: { fontSize: 16, fontWeight: "400" },
     caption: { fontSize: 12, fontWeight: "400" },
+    span: { fontSize: 10, fontWeight: "bold" },
   },
 
   shadow: {
